@@ -4,8 +4,9 @@ import (
 	"bytes"
 	"encoding/binary"
 	"errors"
-	"zinx/utils"
-	"zinx/ziface"
+
+	"github.com/ganhuone/zinx/utils"
+	"github.com/ganhuone/zinx/ziface"
 )
 
 type DataPack struct {

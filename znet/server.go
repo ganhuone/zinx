@@ -3,8 +3,8 @@ package znet
 import (
 	"fmt"
 	"net"
-	"zinx/utils"
-	"zinx/ziface"
+	"github.com/ganhuone/zinx/utils"
+	"github.com/ganhuone/zinx/ziface"
 )
 
 type Server struct {

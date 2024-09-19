@@ -3,8 +3,8 @@ package znet
 import (
 	"fmt"
 	"math/rand"
-	"zinx/utils"
-	"zinx/ziface"
+	"github.com/ganhuone/zinx/utils"
+	"github.com/ganhuone/zinx/ziface"
 )
 
 type MsgHandler struct {

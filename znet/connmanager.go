@@ -4,7 +4,7 @@ import (
 	"errors"
 	"fmt"
 	"sync"
-	"zinx/ziface"
+	"github.com/ganhuone/zinx/ziface"
 )
 
 type ConnManager struct {

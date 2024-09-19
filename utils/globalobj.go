@@ -3,7 +3,7 @@ package utils
 import (
 	"encoding/json"
 	"os"
-	"zinx/ziface"
+	"github.com/ganhuone/zinx/ziface"
 )
 
 var GlobalObject *GlobalObj
