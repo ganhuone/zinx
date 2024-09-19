@@ -1,0 +1,10 @@
+{
+    "Host": "0.0.0.0",
+    "TcpPort": 8080,
+    "Name": "test_Server",
+    "Version": "1.0",
+    "MaxConn": 4,
+    "MaxPackageSize": 4096,
+    "WorkerPoolSize": 10,
+    "MaxWorkerTaskLen": 1024
+}
