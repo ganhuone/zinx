@@ -1,11 +1,10 @@
-package main
+package znet
 
 import (
 	"fmt"
 	"io"
 	"net"
 	"testing"
-	"zinx/znet"
 )
 
 func TestLen(T *testing.T) {
@@ -35,7 +34,7 @@ func TestDataPack(T *testing.T) {
 
 				for {
 
-					dp := znet.NewDataPack()
+					dp := NewDataPack()
 					headData := make([]byte, dp.GetHeadLen())
 					_, err := io.ReadFull(conn, headData)
 					if err != nil {
@@ -75,9 +74,9 @@ func TestDataPack(T *testing.T) {
 		fmt.Println(err)
 	}
 
-	dp := znet.NewDataPack()
+	dp := NewDataPack()
 
-	msgOne := &znet.Message{
+	msgOne := &Message{
 		Id:   1,
 		Data: []byte{'a', 'b', 'c', 'd'},
 	}
@@ -90,7 +89,7 @@ func TestDataPack(T *testing.T) {
 		return
 	}
 
-	msgTwo := &znet.Message{
+	msgTwo := &Message{
 		Id:   1,
 		Data: []byte{'h', 'e', 'l', 'l', 'o'},
 	}
