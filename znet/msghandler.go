@@ -3,6 +3,7 @@ package znet
 import (
 	"fmt"
 	"math/rand"
+
 	"github.com/ganhuone/zinx/utils"
 	"github.com/ganhuone/zinx/ziface"
 )
@@ -13,6 +14,8 @@ type MsgHandler struct {
 	TaskQueue []chan ziface.IRequest
 
 	WorkerPoolSize uint32
+
+	isStop chan bool
 }
 
 func NewMsgHandler() *MsgHandler {
@@ -20,6 +23,7 @@ func NewMsgHandler() *MsgHandler {
 		Apis:           make(map[uint32]ziface.IRouter),
 		TaskQueue:      make([]chan ziface.IRequest, utils.GlobalObject.WorkerPoolSize),
 		WorkerPoolSize: utils.GlobalObject.WorkerPoolSize,
+		isStop:         make(chan bool, 1),
 	}
 }
 
@@ -56,12 +60,22 @@ func (m *MsgHandler) StartWorkerPool() {
 	}
 }
 
+func (m *MsgHandler) StopWorkerPool() {
+	for _, v := range m.TaskQueue {
+		close(v)
+	}
+
+	m.isStop <- true
+}
+
 func (m *MsgHandler) StartOneWorker(workerID int, taskQueue chan ziface.IRequest) {
 	fmt.Println("worker id = ", workerID, " is start")
 	for {
 		select {
 		case request := <-taskQueue:
 			m.DoMsgHandler(request)
+		case <-m.isStop:
+			return
 		}
 	}
 }

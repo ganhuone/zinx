@@ -7,5 +7,7 @@ type IMsgHandler interface {
 
 	StartWorkerPool()
 
+	StopWorkerPool()
+
 	SendMsgToTaskQueue(IRequest)
 }

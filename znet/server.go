@@ -3,6 +3,7 @@ package znet
 import (
 	"fmt"
 	"net"
+
 	"github.com/ganhuone/zinx/utils"
 	"github.com/ganhuone/zinx/ziface"
 )
@@ -70,6 +71,8 @@ func (s *Server) Start() {
 func (s *Server) Stop() {
 	fmt.Println("[STOP] server - ", s.Name)
 	s.ConnMagager.ClearConn()
+
+	s.MsgHandler.StopWorkerPool()
 }
 
 func (s *Server) Serve() {
